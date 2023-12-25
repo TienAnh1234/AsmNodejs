@@ -6,8 +6,19 @@
             <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" class="form-control" id="country" name="country">
+            {{!-- <label for="country" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country" name="country"> --}}
+
+        <select name="country">
+        {{#each countrys }}
+           
+            <option value="{{this.name}}">{{this.name}}</option>
+            
+       
+                
+        {{/each}}
+    </select>
+
         </div>
 
         <div class="mb-3">

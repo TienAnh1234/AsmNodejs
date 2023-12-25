@@ -2,7 +2,7 @@ var express = require('express');
 const CategoriesModel = require('../models/CategoriesModel');
 const ToysModel = require('../models/ToysModel');
 const CartModel = require('../models/CartModel');
-
+const CountryModel = require('../models/CountryModel');
 var router = express.Router();
 
 // url: .../categories/
@@ -15,12 +15,14 @@ router.get('/', async function (req, res, next) {
 
 
 // url: .../categories/add
-router.get('/add', function (req, res, next) {
-    res.render('categories/add');
+router.get('/add', async function (req, res, next) {
+    var countrys = await CountryModel.find({});
+    res.render('categories/add',{ countrys: countrys});
 });
 
 router.post('/add', async function (req, res, next) {
     var category = req.body;
+
     await CategoriesModel.create(category);
     res.redirect('/categories');// đường dẫn đầy đủ
 });
@@ -29,6 +31,7 @@ router.post('/add', async function (req, res, next) {
 router.get('/edit/:id', async function (req, res, next) {
     var id = req.params.id;
     var category = await CategoriesModel.findById(id);
+    
     res.render('categories/edit', { category: category });
 });
 
