@@ -97,4 +97,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+const port = process.env.PORT || 3001;  // thiết lập lại port để có thể đẩy lên render chạy online web
+const host = 'localhost';
+
+app.listen(port, ()=>{
+  console.log('server is running at http://'+host+':'+port)
+})
+
 module.exports = app;
