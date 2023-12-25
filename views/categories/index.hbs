@@ -1,0 +1,48 @@
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">Country</th>
+      <th scope="col">Year</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each categories}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.country}}</td>
+      <td>{{this.year}}</td>
+      <td><a href="/categories/edit/{{this._id}}"><input type="button" class="btn btn-primary" value="Edit"></a></td>
+      <td><a href="/categories/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this category ?')">
+          <input type="button" class="btn btn-primary" value="Delete"></a>
+      </td>
+
+
+    </tr>
+
+    {{/each}}
+
+
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-sm-6"></div>
+  <div class="col-sm-2">
+    <a href="/toys"><input type="button" class="btn btn-primary" value="Back to main page"></a>
+  </div>
+  <div class="col-sm-2">
+    <a href="/categories/add"><input type="button" class="btn btn-primary" value="Add new category"></a>
+  </div>
+
+  <div class="col-sm-2">
+    <a href="/categories/deleteAll" onclick="return confirm('Are you sure to delete all these categories ?')">
+    <input type="button" class="btn btn-primary" value="Delete all category"></a>
+  </div>
+
+</div>

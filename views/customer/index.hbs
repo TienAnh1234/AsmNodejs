@@ -1,0 +1,64 @@
+<h3>Welcome {{user}}</h3>
+<div class="container-fluid row">
+
+    <div class="col-sm-2 border" style="background-color:Cyan; height:500px">
+        <form action="/customers/search" method="post">
+            Enter Name Toy:
+            <input type="search" name="keyword">
+            <input type="submit" value="Search">
+            <br>
+            <br>
+        </form>
+
+        {{#each categories}}
+        <div>
+            <a href="/customers/detail/{{this._id}}"><input type="button" class="btn btn-primary"
+                    value="{{this.name}}"></a>
+            <br><br>
+        </div>
+        {{/each}}
+            <a href="/customers/cart"><input type="button" class="btn btn-primary"
+                    value="Your Cart"></a>
+
+            <br><br>
+
+            <a href="/logout"><input type="button" class="btn bg-success text-white"
+                    value="Log out"></a>
+
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-9" style=" height:700px">
+        <a href="/customers/sort/asc">
+            <input type="button" class="btn btn-primary" value="Low to high"></a>
+        <a href="/customers/sort/desc">
+            <input type="button" class="btn btn-primary" value="High to low"></a>
+
+        <br><br>    
+        <div class="row">
+            {{#each toys}}
+            <div class="col-sm-2 border text-center" style="margin-bottom:30px">
+                <div>
+                    <img src="{{this.image}}" alt="" srcset="" width="100" height="120">
+                    <br>
+                    Name:    {{this.name}}<br>
+                    Price:   {{this.price}}<br>
+                    Category: {{this.category.name}}<br>
+                    <br>
+                    <a href="/customers/addToCart/{{this._id}}">
+                    <input type="button" class="btn btn-primary" value="Add to cart"></a>
+                </div>
+            </div>
+            <br>
+
+
+            <div class="col-sm-1" style="margin-bottom:30px">
+            </div>
+            {{/each}}
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+    <form action="/toys/add" method="post" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+
+        <div class ="mb-3">
+            <label for="image" class="form-label">Name</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+            
+        <div class="mb-3">
+            <label for="manufacture" class="form-label">Manufacture</label>
+            <input type="text" class="form-control" id="manufacture" name="manufacture">
+        </div>
+
+        <div class="mb-3">
+            <label for="material" class="form-label">Material</label>
+            <input type="text" class="form-control" id="material" name="material">
+        </div>
+
+        Categories: 
+        <select name="category" >
+        {{#each categories }}
+            <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+        </select>
+        <br>
+        <br>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" name="price">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Add">
+    </form>
+
+</div>
