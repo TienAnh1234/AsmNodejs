@@ -132,4 +132,9 @@ router.get('/sort/desc', async function(req, res, next) {
   res.render('toys/index',{toys: toys, categories: categories});
 });
 
+
+router.get('/addCountry', async function(req, res, next) {
+  res.render('toys/index',{toys: toys, categories: categories});
+});
+
 module.exports = router;

@@ -90,4 +90,18 @@ router.get('/detail/:id', async function(req, res, next) {
     res.render('toys/index',{toys: toys, categories: categories});
   });
 
+
+  router.get('/addCountry', async function(req, res, next) {
+    res.render('categories/addCountry');
+  });
+
+
+  router.post('/addCountry', async function(req, res, next) {
+    var country = req.body;
+
+    await CountryModel.create(country);
+    res.redirect('/categories');// đường dẫn đầy đủ
+
+  });
+
 module.exports = router;
