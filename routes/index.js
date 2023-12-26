@@ -10,7 +10,7 @@ var UsersModel = require('../models/UsersModel');
 router.get('/', function(req, res, next) {
   if(req.session.logged && req.session.role == "admin"){
     res.redirect('/toys');
-  }else if(req.session.logged && req.session.role == "user"){
+  }else if(req.session.logged){
     res.redirect('/customers');
   }else{
     res.redirect('/dangnhap');
@@ -80,7 +80,10 @@ router.post('/dangki', async function(req, res, next) {
       role: "user"
     });
     req.session.logged = username;
-    req.secret.role = "user";
+    req.session.role = "user";
+
+
+    
     res.redirect('/');
     
   }

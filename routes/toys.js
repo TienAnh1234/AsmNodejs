@@ -137,4 +137,25 @@ router.get('/addCountry', async function(req, res, next) {
   res.render('toys/index',{toys: toys, categories: categories});
 });
 
+
+router.get('/seeAllOrder', async function(req, res, next) {
+  var carts = await CartModel.find({}).populate('toy').populate('category').sort({price:-1});
+
+  var totalPrice = 0 ;
+  for(var i = 0 ; i < carts.length; i++){
+    totalPrice += carts[i].price;
+  }
+  res.render('toys/cartAll',{carts:carts, totalPrice: totalPrice});
+});
+
+router.get('/delete1cart/:id', async function(req, res, next) {
+  var id = req.params.id;
+  await CartModel.findByIdAndDelete(id);
+  res.redirect('/toys/seeAllOrder');
+ });
+
+
+
+
+
 module.exports = router;

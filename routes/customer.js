@@ -80,7 +80,12 @@ router.post('/search', async function(req, res, next) {
 
    var carts = await CartModel.find({ user : user}).populate('toy').populate('category');
 
-   res.render('customer/cart',{carts: carts, user: user});
+    var totalAll = 0 ; 
+   for(var i = 0 ; i < carts.length; i++) {
+      totalAll += carts[i].price; 
+   }
+
+   res.render('customer/cart',{carts: carts, user: user, totalAll: totalAll});
 
   });
 

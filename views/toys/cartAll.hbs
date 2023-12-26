@@ -1,12 +1,14 @@
-<h3>Order of {{user}}</h3>
+<h3>All order</h3>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
-      <th scope="col">UnitPrice</th>
-      <th scope="col">TotalPrice</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">All Price</th>
+      <th scope="col">Owner</th>
+
     </tr>
   </thead>
   <tbody>
@@ -16,19 +18,17 @@
       <td>{{this.toy.name}}</td>
       <td>{{this.category.name}}</td>
       <td>{{this.quantity}}</td>
-
       <td>{{this.toy.price}}</td>
-
       <td>{{this.price}}</td>
-      <td> <a href="/customers/delete1cart/{{this._id}}"><input type="button" class="btn btn-primary" value="Delete"></a></td>
+      <td>{{this.user}}</td>
+      <td> <a href="/toys/delete1cart/{{this._id}}"><input type="button" class="btn btn-primary" value="Delete"></a></td>
     </tr>
    {{/each}}
-   <td><h5>Total All Price</h5></td>
+   <td><h4>All Order</h4></td>
    <td></td>
    <td></td>
    <td></td>
-
-   <td><h5>{{totalAll}}</h5></td>
+   <td><h4>{{totalPrice}}</h4></td>
   </tbody>
 </table>
 

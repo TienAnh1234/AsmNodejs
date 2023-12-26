@@ -7,7 +7,7 @@ const checkLoginAdmin = (req, res, next) => {
  }
 
  const checkLogin = (req, res, next) => {
-   if (req.session.logged && req.session.role === 'user') {
+   if (req.session.logged) {
       next();
    } else {
       res.redirect('/dangnhap');

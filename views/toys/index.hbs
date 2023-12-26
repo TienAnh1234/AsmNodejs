@@ -50,7 +50,7 @@
                     <br>
                     <a href="/toys/edit/{{this._id}}"><input type="button" class="btn btn-primary" value="Edit"></a>
                     <a href="/toys/delete/{{this._id}}"
-                        onclick="return confirm('Are you sure to delete this category ?')">
+                        onclick="return confirm('Are you sure to delete this toy ?')">
                         <input type="button" class="btn btn-primary" value="Delete"></a>
                 </div>
 
@@ -67,8 +67,12 @@
                 <a href="/toys/add">
                     <input type="button" class="btn btn-primary" value="Add new toy"></a>
 
-                <a href="/categories/addCountry">
-                    <input type="button" class="btn btn-primary" value="Add new country"></a>
+                {{!-- <a href="/categories/addCountry">
+                    <input type="button" class="btn btn-primary" value="Add new country"></a> --}}
+
+                <a href="/toys/seeAllOrder">
+                    <input type="button" class="btn btn-primary" value="See all order"></a>
+
 
             </div>
         </div>

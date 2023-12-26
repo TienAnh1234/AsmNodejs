@@ -91,17 +91,17 @@ router.get('/detail/:id', async function(req, res, next) {
   });
 
 
-  router.get('/addCountry', async function(req, res, next) {
-    res.render('categories/addCountry');
-  });
+//   router.get('/addCountry', async function(req, res, next) {
+//     res.render('categories/addCountry');
+//   });
 
 
-  router.post('/addCountry', async function(req, res, next) {
-    var country = req.body;
+//   router.post('/addCountry', async function(req, res, next) {
+//     var country = req.body;
 
-    await CountryModel.create(country);
-    res.redirect('/categories');// đường dẫn đầy đủ
+//     await CountryModel.create(country);
+//     res.redirect('/categories');// đường dẫn đầy đủ
 
-  });
+//   });
 
 module.exports = router;
