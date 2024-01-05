@@ -1,0 +1,35 @@
+<h3>Order of {{user}}</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">UnitPrice</th>
+      <th scope="col">TotalPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#each orders}}
+    <tr>
+      <td>{{this.toy.name}}</td>
+      <td>{{this.category.name}}</td>
+      <td>{{this.quantity}}</td>
+
+      <td>{{this.toy.price}}</td>
+
+      <td>{{this.price}}</td>
+      <td> <a href="/customers/delete1order/{{this._id}}"><input type="button" class="btn btn-primary" value="Delete"></a></td>
+    </tr>
+   {{/each}}
+   <td><h5>Total All Price</h5></td>
+   <td></td>
+   <td></td>
+   <td></td>
+
+   <td><h5>{{totalAll}}</h5></td>
+  </tbody>
+</table>
+
+<a href="/"><input type="button" class="btn btn-primary" value="Back to main page"></a>

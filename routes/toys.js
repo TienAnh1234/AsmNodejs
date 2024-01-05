@@ -1,7 +1,7 @@
 var express = require('express');
 const CategoriesModel = require('../models/CategoriesModel');
 const ToysModel = require('../models/ToysModel');
-const CartModel = require('../models/CartModel');
+const OrderModel = require('../models/OrderModel');
 var router = express.Router();
 
 // upload file ảnh
@@ -13,7 +13,6 @@ var storage = new CloudinaryStorage({
     folder: "BANK",
     allowFormats:['jpg','png','jpeg'],
     transformation:[{width:500, height:500,crop:'limit'}],
-
 });
 var upload = multer({
   storage:storage
@@ -91,9 +90,9 @@ router.post('/edit/:id',upload.single('image'), async function(req, res, next) {
 router.get('/delete/:id', async function (req, res, next) {
     try {
         var id = req.params.id;
-        var carts = await CartModel.find({toy : id}).populate('category').populate('toy');
-        for(var i = 0; i <carts.length; i++){
-          await CartModel.deleteOne(carts[i]); 
+        var orders = await OrderModel.find({toy : id}).populate('category').populate('toy');
+        for(var i = 0; i <orders.length; i++){
+          await OrderModel.deleteOne(orders[i]); 
       }
         await ToysModel.findByIdAndDelete(id);
         res.redirect('/toys');
@@ -107,7 +106,7 @@ router.get('/delete/:id', async function (req, res, next) {
 
 router.get('/deleteAll', async function(req, res, next) {
     await ToysModel.deleteMany()  // dùng để xóa toàn bộ bản ghi trong bảng
-    await CartModel.deleteMany();
+    await OrderModel.deleteMany();
     console.log("Delete all categories successfully ");
     res.redirect('/toys');
 });
@@ -133,24 +132,21 @@ router.get('/sort/desc', async function(req, res, next) {
 });
 
 
-router.get('/addCountry', async function(req, res, next) {
-  res.render('toys/index',{toys: toys, categories: categories});
-});
 
 
 router.get('/seeAllOrder', async function(req, res, next) {
-  var carts = await CartModel.find({}).populate('toy').populate('category').sort({price:-1});
+  var orders = await OrderModel.find({}).populate('toy').populate('category').sort({price:-1});
 
   var totalPrice = 0 ;
-  for(var i = 0 ; i < carts.length; i++){
-    totalPrice += carts[i].price;
+  for(var i = 0 ; i < orders.length; i++){
+    totalPrice += orders[i].price;
   }
-  res.render('toys/cartAll',{carts:carts, totalPrice: totalPrice});
+  res.render('toys/orderAll',{orders:orders, totalPrice: totalPrice});
 });
 
-router.get('/delete1cart/:id', async function(req, res, next) {
+router.get('/delete1order/:id', async function(req, res, next) {
   var id = req.params.id;
-  await CartModel.findByIdAndDelete(id);
+  await OrderModel.findByIdAndDelete(id);
   res.redirect('/toys/seeAllOrder');
  });
 

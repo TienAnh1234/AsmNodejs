@@ -13,7 +13,7 @@
   </thead>
   <tbody>
 
-    {{#each carts}}
+    {{#each orders}}
     <tr>
       <td>{{this.toy.name}}</td>
       <td>{{this.category.name}}</td>
@@ -21,7 +21,7 @@
       <td>{{this.toy.price}}</td>
       <td>{{this.price}}</td>
       <td>{{this.user}}</td>
-      <td> <a href="/toys/delete1cart/{{this._id}}"><input type="button" class="btn btn-primary" value="Delete"></a></td>
+      <td> <a href="/toys/delete1order/{{this._id}}"><input type="button" class="btn btn-primary" value="Delete"></a></td>
     </tr>
    {{/each}}
    <td><h4>All Order</h4></td>

@@ -1,7 +1,7 @@
 
 
 var mongoose = require('mongoose');
-var CartSchema = mongoose.Schema(
+var OrderSchema = mongoose.Schema(
     {
         toy: {
             type: mongoose.Schema.Types.ObjectId,
@@ -18,6 +18,6 @@ var CartSchema = mongoose.Schema(
     }
 )
 
-var CartModel = mongoose.model("carts",CartSchema);
+var OrderModel = mongoose.model("orders",OrderSchema);
 
-module.exports = CartModel;
+module.exports = OrderModel;

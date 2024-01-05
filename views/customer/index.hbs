@@ -1,7 +1,14 @@
-<h3>Welcome {{user}}</h3>
+
+<div class="container-fluid row">
+    <div class="col-sm-10" > <h3>Welcome {{user}}</h3> </div>
+    <div class="col-sm-2" > <a href="/customers/cart"><input type="button" class="btn btn-primary" value="Your Cart"></a></div>
+
+
+</div>
+
 <div class="container-fluid row">
 
-    <div class="col-sm-2 border" style="background-color:Cyan; height:500px">
+    <div class="col-sm-2 border" style="background-color:Cyan; height:700px">
         <form action="/customers/search" method="post">
             Enter Name Toy:
             <input type="search" name="keyword">
@@ -17,7 +24,7 @@
             <br><br>
         </div>
         {{/each}}
-            <a href="/customers/cart"><input type="button" class="btn btn-primary"
+            <a href="/customers/order"><input type="button" class="btn btn-primary"
                     value="Your Order"></a>
 
             <br><br>
@@ -46,8 +53,13 @@
                     Price:   {{this.price}}<br>
                     Category: {{this.category.name}}<br>
                     <br>
-                    <a href="/customers/addToCart/{{this._id}}">
+                    <a href="/customers/addToOrder/{{this._id}}">
                     <input type="button" class="btn btn-primary" value="Order"></a>
+
+                    <br><br>
+                    <a href="/customers/addToCartReal/{{this._id}}">
+                    <input type="button" class="btn btn-primary" value="Add to cart"></a>
+
                 </div>
             </div>
             <br>

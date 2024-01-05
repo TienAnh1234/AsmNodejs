@@ -1,35 +1,33 @@
-<h3>Order of {{user}}</h3>
+<h3>Cart of {{user}}</h3>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Image</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
-      <th scope="col">UnitPrice</th>
-      <th scope="col">TotalPrice</th>
+      <th scope="col">Action </th>
+      <th scope="col">Action </th>
+
     </tr>
   </thead>
   <tbody>
 
-    {{#each carts}}
+    {{#each yourcart}}
     <tr>
       <td>{{this.toy.name}}</td>
-      <td>{{this.category.name}}</td>
+      <td><img src="{{this.toy.image}}" alt="" srcset="" width="100" height="120"></td>
+      <td>{{this.toy.category.name}}</td>
       <td>{{this.quantity}}</td>
-
-      <td>{{this.toy.price}}</td>
-
-      <td>{{this.price}}</td>
-      <td> <a href="/customers/delete1cart/{{this._id}}"><input type="button" class="btn btn-primary" value="Delete"></a></td>
+      <td> <a href='/customers/delete1cart/{{this.toy._id}}/{{this.user}}/{{this.quantity}}' onclick="return confirm('Are you sure ?')">
+      <input type="button" class="btn btn-primary" value="Delete"></a></td>
+      <td><a href="/customers/addToOrderFromCart/{{this.toy._id}}/{{this.quantity}}"><input type="button" class="btn btn-primary" value="Order"></a></td>
     </tr>
    {{/each}}
-   <td><h5>Total All Price</h5></td>
-   <td></td>
-   <td></td>
-   <td></td>
-
-   <td><h5>{{totalAll}}</h5></td>
+    
   </tbody>
+
+
 </table>
 
 <a href="/"><input type="button" class="btn btn-primary" value="Back to main page"></a>

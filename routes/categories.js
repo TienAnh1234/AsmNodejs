@@ -1,7 +1,7 @@
 var express = require('express');
 const CategoriesModel = require('../models/CategoriesModel');
 const ToysModel = require('../models/ToysModel');
-const CartModel = require('../models/CartModel');
+const OrderModel = require('../models/OrderModel');
 const CountryModel = require('../models/CountryModel');
 var router = express.Router();
 
@@ -55,14 +55,13 @@ router.get('/delete/:id', async function (req, res, next) {
     try {
         var id = req.params.id;
         var toys = await ToysModel.find({category : id}).populate('category');
-        var carts = await CartModel.find({category : id}).populate('category');
+        var orders = await OrderModel.find({category : id}).populate('category');
         for(var i = 0; i <toys.length; i++){
             await ToysModel.deleteOne(toys[i]); 
             //console.log('hanoi'); 
         }
-        for(var i = 0; i <carts.length; i++){
-            await CartModel.deleteOne(carts[i]); 
-
+        for(var i = 0; i <orders.length; i++){
+            await OrderModel.deleteOne(orders[i]); 
         }
         await CategoriesModel.findByIdAndDelete(id);
 
@@ -77,11 +76,11 @@ router.get('/delete/:id', async function (req, res, next) {
 router.get('/deleteAll', async function(req, res, next) {
     await CategoriesModel.deleteMany()  // dùng để xóa toàn bộ bản ghi trong bảng
     await ToysModel.deleteMany() 
-    await CartModel.deleteMany() 
+    await OrderModel.deleteMany() 
     console.log("Delete all categories successfully ");
     res.redirect('/categories');
 });
-
+    
 
 router.get('/detail/:id', async function(req, res, next) {
     var id = req.params.id;

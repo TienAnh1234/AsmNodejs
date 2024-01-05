@@ -63,7 +63,7 @@ router.post('/dangki', async function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
   var passwordAgain = req.body.passwordAgain;
-  var users = await UsersModel.find({});
+  var users = await UsersModel.find({});  // trả về một mảng các đối tượng là các bản ghi trong UsersModel
 
   var x=0;
   for(var i = 0; i < users.length; i++){
